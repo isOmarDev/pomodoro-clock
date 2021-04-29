@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,500;0,700;0,900;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumar+One&display=swap');
+
+:root {
+  --green: #0db556;
+  --red: #FF2826;
+  --black: #000000;
+}
+
+* {
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: auto;
+}
+
+html {
+  font-size: 100%;
+  line-height: 1.4;
+  font-weight: 400;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: currentColor
+}
+
+button {
+  border: none;
+  cursor: pointer;  
+  text-decoration: none;
+  background-color: transparent;
+}
+
+button:focus {
+  outline: none;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--black);
+  width: 100%;
+  height: 100%;
+}
+
+.controls-and-timer {
+  position: relative;
+  border-radius: 8px;
+  width: 700px;
+  height: 230px;
+}
+.controls-and-timer > svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.red-overlay {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.timer {
+  background-color: var(--black);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2000;
+  width: 600px;
+  height: 210px;
+  margin: 17px auto 0 auto;
+}
+
+.session-title {
+  font-weight: 300;
+  font-size: 22px;
+  letter-spacing: 1.2px;
+  text-align: end;
+  padding-right: 73px;
+  padding-top: 25px;
+}
+.timer-title {
+  font-weight: 500;
+  font-family: 'Kumar One', cursive;
+  font-size: 155px;
+  line-height: 0.5;
+  text-align: center;
+}
+
+.play-Pause,
+.reset {
+  position: absolute;
+  z-index: 3000;
+}
+.play-Pause {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 80px;
+  right: -3px;
+  border-radius: 100%;
+  box-shadow: rgba(0, 0, 0, 0.9) 0px 0px 16px, rgba(0, 0, 0, 0.9) 0px 0px 24px, rgba(0, 0, 0, 0.9) 0px 0px 56px;
+  width: 53px;
+  height: 53px;
+  transition: 150ms transform linear;
+}
+
+.play-Pause:hover {
+  transform: scale(1.1);
+}
+.play-Pause:active {
+  transform: scale(1);
+  transition: 10ms transform linear;
+}
+.play {
+  width: 20px;
+  margin-left: 5px;
+  margin-top: 2px;
+}
+.pause {
+  width: 20px;
+}
+.reset {
+  bottom: 0;
+  right: 0;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-align: center;
+  background-color: var(--black);
+  border-radius: 7px;
+  width: 47px;
+  height: 47px;
+}
+
+.settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  height: 60px;
+  margin-top: 45px;
+}
+.settings-toggle {
+  cursor: pointer;
+  width: 35px;
+  margin-left: auto;
+  margin-right: 9px;
+  transition: 150ms transform linear;
+}
+.settings-toggle:hover {
+  transform: scale(1.1);
+}
+.settings-toggle:active {
+  transform: rotate(100deg);
+  transition: 50ms transform linear;
+}
+.settings-toggle > img {
+  display: block;
+  width: 100%;
+}
+
+.switch-theme,
+.break-interval,
+.work-interval{
+  font-size: 10px;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 1.1px;
+  border-radius: 8px;
+  width: 100px;
+  height: 60px;
+}
+.switch-theme,
+.icon-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.switch-theme {
+  cursor: pointer;
+  font-weight: 800;
+}
+.switch-theme-icon {
+  width: 22px;
+}
+.switch-theme-icon > img{
+  display: block;
+  width: 100%;
+}
+
+.break-interval,
+.work-interval {
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  z-index: 2000;
+  margin-left: 30px;
+}
+.switch-theme--fadein {
+  transition: opacity 250ms linear 0ms;
+}
+.break-interval--fadein {
+  transition: opacity 250ms linear 100ms;
+}
+.work-interval--fadein{
+  transition: opacity 250ms linear 200ms;
+}
+.switch-theme--fadeout,
+.break-interval--fadeout,
+.work-interval--fadeout {
+  visibility: hidden;
+  opacity: 0;
+}
+.switch-theme--fadeout {
+  transition: visibility 400ms, opacity 250ms linear 200ms;
+}
+.break-interval--fadeout {
+  transition: visibility 400ms, opacity 250ms linear 100ms;
+}
+.work-interval--fadeout {
+  transition: visibility 400ms, opacity 250ms linear 0ms;
+}
+
+.increment-decrement {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.increment,
+.decrement {
+  cursor: pointer;
+  width: 15px;
+}
+.increment > img,
+.decrement > img {
+  display: block;
+  width: 100%;
+}
+.increment {
+  margin-bottom: -5px;
+}
+.decrement {
+  margin-top: -5px;
+}
+
+.icon-title-wrapper {
+  align-items: flex-end;
+  text-align: end;
+  width: 50px;
+}
+.break-icon {
+  width: 20px;
+}
+.break-icon > img {
+  display: block;
+  width: 100%;
+}
+
+
+/* classes-modifiers */
+/* reds */
+.controls-and-timer--border-red {
+  border: var(--red) 3px solid;
+}
+.timer--border-red {
+  border-color: var(--red);
+  border-top: var(--red) 3px solid;
+  border-right: var(--red) 3px solid;
+  border-left: var(--red) 3px solid;
+}
+.red-overlay--background-red,
+.play-Pause--background-red {
+  background-color: var(--red);
+}
+.session-title--font-red,
+.timer-title--font-red,
+.reset--font-red {
+  color: var(--red);  
+} 
+.switch-theme--background-red {
+  background-color: var(--red);
+}
+.break-interval--font-border-red,
+.work-interval--font-border-red {
+  color: var(--red);
+  border: 2px var(--red) solid;
+}
+
+/* greens */
+.controls-and-timer--border-green{
+  border: var(--green) 3px solid;
+}
+.timer--border-green {
+  border-color: var(--green);
+  border-top: var(--green) 3px solid;
+  border-right: var(--green) 3px solid;
+  border-left: var(--green) 3px solid;
+}
+.red-overlay--background-green,
+.play-Pause--background-green {
+  background-color: var(--green);
+}
+.session-title--font-green,
+.timer-title--font-green,
+.reset--font-green {
+  color: var(--green);  
+} 
+.switch-theme--background-green {
+  background-color: var(--green);
+}
+.break-interval--font-border-green,
+.work-interval--font-border-green {
+  color: var(--green);
+  border: 2px var(--green) solid;
+}
